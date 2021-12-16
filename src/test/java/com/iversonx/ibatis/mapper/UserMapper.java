@@ -11,4 +11,8 @@ public interface UserMapper {
     int insertUser(User user);
     
     User getById(Long id);
+    
+    default void show() {
+        System.out.println("asdasdasdsa" + this.getClass());
+    }
 }

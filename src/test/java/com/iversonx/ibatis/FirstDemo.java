@@ -20,6 +20,7 @@ public class FirstDemo {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        userMapper.show();
         User user = userMapper.getById(4L);
         System.out.println(user);
     }
