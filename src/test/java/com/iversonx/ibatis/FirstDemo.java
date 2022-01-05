@@ -18,10 +18,11 @@ public class FirstDemo {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        userMapper.show();
-        User user = userMapper.getById(4L);
-        System.out.println(user);
+        try(SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            userMapper.show();
+            User user = userMapper.getById(4L);
+            System.out.println(user);
+        }
     }
 }

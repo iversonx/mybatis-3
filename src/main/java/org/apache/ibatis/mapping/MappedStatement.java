@@ -32,14 +32,33 @@ import org.apache.ibatis.session.Configuration;
  * @author Clinton Begin
  */
 public final class MappedStatement {
-
+  
+  /**
+   * 语句来源，例如：mapper/xxxMapper.xml
+   */
   private String resource;
   private Configuration configuration;
+  
+  /**
+   * 语句的唯一标识，取值为方法的全路径名：com.***.mapper.***Mapper.getById
+   */
   private String id;
   private Integer fetchSize;
   private Integer timeout;
+  
+  /**
+   * 语句类型：STATEMENT(普通语句), PREPARED(预编译语句), CALLABLE(存储过程)
+   */
   private StatementType statementType;
+  
+  /**
+   * 结果集类型
+   */
   private ResultSetType resultSetType;
+  
+  /**
+   * sql语句
+   */
   private SqlSource sqlSource;
   private Cache cache;
   private ParameterMap parameterMap;
